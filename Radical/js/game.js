@@ -193,8 +193,8 @@ GameState.prototype =
     // Evaluates what the current game level is.
     currentLevel : function ()
     {
-        // If the current score is a multiple of 25
-        if(barrierCountScore % 10 == 0 && barrierCountScore != 0)
+        // If the current score is a multiple of 10
+        if(barrierCountScore % 4 == 0 && barrierCountScore != 0)
         {
             // Can we increase our current level?
             if(bCanIncreaseLevel)
@@ -205,31 +205,36 @@ GameState.prototype =
                     case 1:
                         // Increase the number of game levels.
                         gameLevel = 2;
+                        ChangeLevel(2, 150, 450, '#182d3b');
 
                         break;
                     case 2:
                         // Increase the number of game levels.
-                        gameLevel = 3;
+                        //gameLevel = 3;
                         // Increase the barrier's fall speed.
-                        barrierFallSpeed = 175;
+                        //barrierFallSpeed = 175;
                         // Increase the player's movement speed.
-                        shipHorizontalSpeed = 500;
+                        //shipHorizontalSpeed = 500;
+                        ChangeLevel(3, 175, 500, '#152835');
 
                         break;
                     case 3:
                         // Increase the number of game levels.
-                        gameLevel = 4;
+                        //gameLevel = 4;
                         // Increase the barrier's fall speed.
-                        barrierFallSpeed = 200;
+                        //barrierFallSpeed = 200;
                         // Increase the player's movement speed.
-                        shipHorizontalSpeed = 550;
+                        //shipHorizontalSpeed = 550;
+                        ChangeLevel(4, 200, 550, '#2f424e');
 
                         break;
                     case 4:
                         // Increase the barrier's fall speed.
-                        barrierFallSpeed = 250;
+                        //barrierFallSpeed = 250;
                         // Increase the player's movement speed.
-                        shipHorizontalSpeed = 600;
+                        //shipHorizontalSpeed = 600;
+                        
+                        ChangeLevel(4, 250, 600, '#8b969d');
 
                         break;
                 }
@@ -265,13 +270,22 @@ function MuteAudioButtonEvent ()
         BGM.mute = true;
         deathSFX.mute = true;
     }
-    // Otherwise
     else 
     {
         // Umute the audio.
         BGM.mute = false;
         deathSFX.mute = false;
     }
+}
+
+// Changes the current game level's settings.
+function ChangeLevel (newLevelCount, newFallSpeed, newShipSpeed, hashColor)
+{
+    gameLevel = newLevelCount;
+    barrierFallSpeed = newFallSpeed;
+    shipHorizontalSpeed = newShipSpeed;
+    
+    game.stage.backgroundColor = hashColor;
 }
  
 // Stops the ship's movement.

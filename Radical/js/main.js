@@ -1,7 +1,7 @@
 ///----- Creates and defines the game and all of it's sub-states ------\\\
 
 // The game window.
-var game = new Phaser.Game(480, 720, Phaser.CANVAS, "");
+var game = new Phaser.Game(480, 720, Phaser.CANVAS, "gameDiv");
 
 // The state's to be used.
 game.state.add("Boot", BootState);
